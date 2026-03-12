@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - config: Release-R2024
+            revit: '2024'
+            tfm: net48
+          - config: Release-R2025
+            revit: '2025'
+            tfm: net8.0-windows
+          - config: Release-R2026
+            revit: '2026'
+            tfm: net8.0-windows
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet build Meshy-Revit.sln --configuration ${{ matrix.config }}
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $outDir = "MeshyRevit/bin/${{ matrix.config }}/${{ matrix.tfm }}"
+          $staging = "staging"
+
+          New-Item -ItemType Directory -Path "$staging/MeshyRevit" -Force
+
+          # .addin goes at root (users extract into Addins/{version}/)
+          Copy-Item "$outDir/MeshyRevit.addin" "$staging/"
+
+          # DLLs go into MeshyRevit/ subfolder
+          Copy-Item "$outDir/MeshyRevit.dll" "$staging/MeshyRevit/"
+
+          # Bundle Newtonsoft.Json for R2024 (net48 needs it; R2025/R2026 exclude it at runtime)
+          if (Test-Path "$outDir/Newtonsoft.Json.dll") {
+            Copy-Item "$outDir/Newtonsoft.Json.dll" "$staging/MeshyRevit/"
+          }
+
+          Compress-Archive -Path "$staging/*" -DestinationPath "MeshyRevit-R${{ matrix.revit }}.zip"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MeshyRevit-R${{ matrix.revit }}
+          path: MeshyRevit-R${{ matrix.revit }}.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*.zip
+          generate_release_notes: true
+          body: |
+            ## Installation
+
+            1. Download the zip for your Revit version
+            2. Extract into `%APPDATA%\Autodesk\REVIT\Addins\{version}\`
+            3. Restart Revit
+            4. Find **Meshy 3D Generator** on the Meshy ribbon tab

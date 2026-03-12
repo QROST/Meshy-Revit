@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Name>Meshy 3D Generator</Name>
+    <Assembly>MeshyRevit\MeshyRevit.dll</Assembly>
+    <AddInId>B0167ED8-6CDC-4070-96D6-001DF19CA79E</AddInId>
+    <FullClassName>MeshyRevit.MeshyCommand</FullClassName>
+    <Text>Meshy 3D Generator</Text>
+    <Description>Generate 3D models from text or images using Meshy AI and place them in Revit</Description>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <VendorId>QROST</VendorId>
+    <VendorDescription>QROST</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Meshy Revit Plugin</Name>
+    <Assembly>MeshyRevit\MeshyRevit.dll</Assembly>
+    <FullClassName>MeshyRevit.App</FullClassName>
+    <ClientId>404F22FD-47B9-44C9-925E-5280E7AB7FD9</ClientId>
+    <VendorId>QROST</VendorId>
+    <VendorDescription>QROST</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,37 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeshyRevit", "MeshyRevit\MeshyRevit.csproj", "{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug-R2024|Any CPU = Debug-R2024|Any CPU
+		Debug-R2025|Any CPU = Debug-R2025|Any CPU
+		Debug-R2026|Any CPU = Debug-R2026|Any CPU
+		Release-R2024|Any CPU = Release-R2024|Any CPU
+		Release-R2025|Any CPU = Release-R2025|Any CPU
+		Release-R2026|Any CPU = Release-R2026|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Debug-R2024|Any CPU.ActiveCfg = Debug-R2024|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Debug-R2024|Any CPU.Build.0 = Debug-R2024|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Debug-R2025|Any CPU.ActiveCfg = Debug-R2025|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Debug-R2025|Any CPU.Build.0 = Debug-R2025|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Debug-R2026|Any CPU.ActiveCfg = Debug-R2026|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Debug-R2026|Any CPU.Build.0 = Debug-R2026|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Release-R2024|Any CPU.ActiveCfg = Release-R2024|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Release-R2024|Any CPU.Build.0 = Release-R2024|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Release-R2025|Any CPU.ActiveCfg = Release-R2025|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Release-R2025|Any CPU.Build.0 = Release-R2025|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Release-R2026|Any CPU.ActiveCfg = Release-R2026|Any CPU
+		{2D6DAEDE-5009-4D93-BCD6-570AC304ABBA}.Release-R2026|Any CPU.Build.0 = Release-R2026|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B774316-F3C9-49B6-B360-A59DE7389EE9}
+	EndGlobalSection
+EndGlobal
